@@ -1,7 +1,5 @@
 package au.edu.canberra.mtfinalassignment;
 
-import androidx.fragment.app.FragmentActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -110,6 +107,23 @@ public class ActivityTwo extends AppCompatActivity implements OnMapReadyCallback
                 }
                 return infoWindow;
 
+            }
+        });
+
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+
+                if (marker.getId().equals(googleMarker.getId())) {
+                    Intent intent = new Intent(getApplicationContext(), ActivityThree.class);
+//                    intent.putExtra("url", "https://www.canberra.edu.au/library");
+                    startActivity(intent);
+                }
+                if (marker.getId().equals(ibmMarker.getId())) {
+                    Intent intent = new Intent(getApplicationContext(), ActivityThree.class);
+//                    intent.putExtra("url", "https://www.canberra.edu.au/current-students");
+                    startActivity(intent);
+                }
             }
         });
     }
