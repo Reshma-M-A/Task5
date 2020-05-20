@@ -74,10 +74,10 @@ public class ActivitySix extends AppCompatActivity {
     {
         Intent intent = new Intent(getApplicationContext(),ActivitySeven.class);
         String itemName=textView1.getText().toString();
-        String detectedResult=textView2.getText().toString();
+        String classifiedResult=textView2.getText().toString();
         intent.putExtra("uri",outputFileUri);
         intent.putExtra("itemName",itemName);
-        intent.putExtra("detectedResult",detectedResult);
+        intent.putExtra("classifiedResult",classifiedResult);
         intent.putExtra("imageFileName",imageFileName);
         startActivity(intent);
     }

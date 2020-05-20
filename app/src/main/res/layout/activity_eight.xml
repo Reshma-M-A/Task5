@@ -10,7 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="152dp"
         android:layout_height="41dp"
-        android:text="Picture List"
+        android:text="List of Classified Images"
         android:textSize="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

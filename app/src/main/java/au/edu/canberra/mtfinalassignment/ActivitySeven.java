@@ -53,21 +53,10 @@ public class ActivitySeven extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seven);
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         Intent intent = getIntent();
         itemName = intent.getStringExtra("itemName");
-        classifiedResult = intent.getStringExtra("detectedResult");
+        classifiedResult = intent.getStringExtra("classifiedResult");
         imageFileName=intent.getStringExtra("imageFileName");
         outputFileUri=intent.getParcelableExtra("uri");
         key=intent.getStringExtra("key");
@@ -103,7 +92,7 @@ public class ActivitySeven extends AppCompatActivity {
     }
     public void addItemToRealtimeDB() {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        DatabaseReference dbRef = db.getReference("detected_item");
+        DatabaseReference dbRef = db.getReference("classified_item");
 
         ClassifiedItem Item = new ClassifiedItem(editText.getText().toString(), editText2.getText().toString(), imageFileName);
         String key = dbRef.push().getKey();
@@ -152,16 +141,16 @@ public class ActivitySeven extends AppCompatActivity {
     public String updateDataItemFromFirebaseDatabase(ClassifiedItem item,String key)
     {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        DatabaseReference dbRef = db.getReference("detected_item");
+        DatabaseReference dbRef = db.getReference("classified_item");
         dbRef.child(key).child("ItemName").setValue(item.getItemName());
-        dbRef.child(key).child("DetectedResult").setValue(item.getClassifiedResult());
+        dbRef.child(key).child("ClassifiedResult").setValue(item.getClassifiedResult());
         dbRef.child(key).child("ImageFileName").setValue(item.getImageFileName());
         return key;
     }
     public void deleteDataItemFromFirebaseDatabase(String key)
     {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        DatabaseReference dbRef = db.getReference("detected_item");
+        DatabaseReference dbRef = db.getReference("classified_item");
         if(key != null) {
             dbRef.child(key).removeValue();
         }

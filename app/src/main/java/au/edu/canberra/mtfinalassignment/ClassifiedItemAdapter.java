@@ -42,6 +42,7 @@ public class ClassifiedItemAdapter extends ArrayAdapter<ClassifiedItem> {
         ClassifiedItem item = items.get(position);
 
         ImageView icon = (ImageView) convertView.findViewById(R.id.imageViewIcon);
+        //icon.setImageResource(R.mipmap.ic_launcher);
         icon.setImageResource(R.mipmap.ic_launcher);
         TextView title = (TextView) convertView.findViewById(R.id.textViewTitle);
         title.setText(item.getItemName());

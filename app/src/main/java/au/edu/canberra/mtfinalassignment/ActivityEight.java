@@ -34,19 +34,14 @@ import java.util.ArrayList;
 
 public class ActivityEight extends AppCompatActivity {
     ArrayList<ClassifiedItem> ClassifiedItem = new ArrayList<ClassifiedItem>();
-
     FirebaseDatabase db = FirebaseDatabase.getInstance();
-    DatabaseReference dbRef = db.getReference("detected_item");
+    DatabaseReference dbRef = db.getReference("classified_item");
     ArrayList<String> keys = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eight);
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-
-
 
         final ClassifiedItemAdapter adapter = new ClassifiedItemAdapter(
                 this, R.layout.activity_eight, ClassifiedItem);
@@ -102,7 +97,7 @@ public class ActivityEight extends AppCompatActivity {
                         ClassifiedItem dtm = ClassifiedItem.get(position);
                         Intent intent = new Intent(view.getContext(), ActivityNine.class);
                         intent.putExtra("ItemName", dtm.getItemName());
-                        intent.putExtra("DetectedResult", dtm.getClassifiedResult());
+                        intent.putExtra("ClassifiedResult", dtm.getClassifiedResult());
                         intent.putExtra("ImageFileName", dtm.getImageFileName());
                         intent.putExtra("key", key);
                         startActivity(intent);
@@ -123,14 +118,6 @@ public class ActivityEight extends AppCompatActivity {
             notifyUser(ex.getMessage());
         }
 
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     public void downloadFile(StorageReference fileRef, final File file) {

@@ -1,7 +1,5 @@
 package au.edu.canberra.mtfinalassignment;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +17,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
@@ -56,7 +55,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 
 
-
 public class ActivityThree extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1001;
     private static final int REQUEST_IMAGE_CAPTURE = 1000;
@@ -76,21 +74,11 @@ public class ActivityThree extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_three);
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
         imageView = findViewById(R.id.imageView);
         textView = (TextView) findViewById(R.id.textView);
         activity = this;
 
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     public void capture(View view){
