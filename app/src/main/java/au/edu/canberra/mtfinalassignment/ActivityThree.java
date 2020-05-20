@@ -78,8 +78,16 @@ public class ActivityThree extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String title = extras.getString("title");
         setTitle(title);
-
         imageView = findViewById(R.id.imageView);
+//            IBM Watson
+        if(title == "IBM Watson ML Cloud Services"){
+            imageView.setImageDrawable(getResources()
+                    .getDrawable((R.drawable.ibm), getTheme()));
+        }
+
+        imageView.setImageDrawable(getResources()
+                .getDrawable((R.drawable.google), getTheme()));
+
         textView = (TextView) findViewById(R.id.textView);
         activity = this;
 
