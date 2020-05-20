@@ -70,7 +70,7 @@ public class ActivityThree extends AppCompatActivity {
     private String temp;
     private String item;
     private Bitmap photoBitmap;
-    ArrayList<ClassifiedItem> DetectedItem = new ArrayList<ClassifiedItem>();
+    ArrayList<ClassifiedItem> ClassifiedItem = new ArrayList<ClassifiedItem>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -206,7 +206,7 @@ public class ActivityThree extends AppCompatActivity {
                                 intent.putExtra("uri",outputFileUri);
                                 intent.putExtra("itemName",data);
                                 intent.putExtra("imageFileName",imageFileName);
-                                intent.putExtra("detectedResult",data2);
+                                intent.putExtra("classifiedResult",data2);
                                 startActivity(intent);
                             }
                         })
