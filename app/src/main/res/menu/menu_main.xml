@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/list"
+        android:orderInCategory="100"
+        android:title="Item List"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/map_normal"
         android:orderInCategory="1"
         android:title="Normal"

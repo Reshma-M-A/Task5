@@ -4,6 +4,7 @@ package au.edu.canberra.mtfinalassignment;
 public class ClassifiedItem {
     // Please do not change anything in this class
     private String itemName; // do not change
+    // this is the same as detectedResult
     private String classifiedResult; // do not change
     private String imageFileName; // do not change
 
