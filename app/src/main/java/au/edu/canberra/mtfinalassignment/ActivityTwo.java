@@ -2,6 +2,7 @@ package au.edu.canberra.mtfinalassignment;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -61,20 +62,56 @@ public class ActivityTwo extends AppCompatActivity implements OnMapReadyCallback
 
         //Google marker
         final Marker googleMarker = mMap.addMarker(new MarkerOptions()
-                .title("UC Library")
+                .title("Google Headquarters")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_google_round))
-                .snippet("24 Hr access for all students and staff")
+                .snippet("Mountain View, California, USA")
                 .position(google)
                 .draggable(false));
 
         //IBM marker
         final Marker ibmMarker = mMap.addMarker(new MarkerOptions()
-                .title("Student Centre")
+                .title("IBM Headquarters")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_ibm_round))
-                .snippet("Your gateway to access support and advice")
+                .snippet("Yorktown Height, New York, USA")
                 .position(ibm)
                 .draggable(false));
 
+        //custom info window layout for different markers on map
+        mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+            @Override
+            public View getInfoWindow(Marker marker) {
+                return null;
+            }
+
+            //inflate selected marker and fill with related information
+            @Override
+            public View getInfoContents(Marker marker) {
+                //added suppression to remove "avoid passing 'null' as the view root" warning
+                @SuppressLint("InflateParams") View infoWindow = getLayoutInflater().inflate(R.layout.infowindow_with_image, null);
+
+                TextView title = infoWindow.findViewById(R.id.title);
+                TextView snippet = infoWindow.findViewById(R.id.snippet);
+                ImageView image = infoWindow.findViewById(R.id.info_image);
+
+                //Google custom info window
+                if (marker.getId().equals(googleMarker.getId())) {
+                    title.setText(marker.getTitle());
+                    snippet.setText(marker.getSnippet());
+                    image.setImageDrawable(getResources()
+                            .getDrawable(R.mipmap.ic_google_round, getTheme()));
+                }
+
+                //IBM custom info window
+                if (marker.getId().equals(ibmMarker.getId())) {
+                    title.setText(marker.getTitle());
+                    snippet.setText(marker.getSnippet());
+                    image.setImageDrawable(getResources()
+                            .getDrawable(R.mipmap.ic_ibm_round, getTheme()));
+                }
+                return infoWindow;
+
+            }
+        });
     }
 
     @Override
