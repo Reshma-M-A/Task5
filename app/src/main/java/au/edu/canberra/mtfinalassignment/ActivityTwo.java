@@ -116,12 +116,12 @@ public class ActivityTwo extends AppCompatActivity implements OnMapReadyCallback
 
                 if (marker.getId().equals(googleMarker.getId())) {
                     Intent intent = new Intent(getApplicationContext(), ActivityThree.class);
-//                    intent.putExtra("url", "https://www.canberra.edu.au/library");
+                    intent.putExtra("title", "Google Firebase ML Cloud Services");
                     startActivity(intent);
                 }
                 if (marker.getId().equals(ibmMarker.getId())) {
                     Intent intent = new Intent(getApplicationContext(), ActivityThree.class);
-//                    intent.putExtra("url", "https://www.canberra.edu.au/current-students");
+                    intent.putExtra("title", "IBM Watson ML Cloud Services");
                     startActivity(intent);
                 }
             }

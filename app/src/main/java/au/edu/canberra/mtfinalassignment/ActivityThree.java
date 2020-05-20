@@ -75,6 +75,10 @@ public class ActivityThree extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_three);
 
+        Bundle extras = getIntent().getExtras();
+        String title = extras.getString("title");
+        setTitle(title);
+
         imageView = findViewById(R.id.imageView);
         textView = (TextView) findViewById(R.id.textView);
         activity = this;
