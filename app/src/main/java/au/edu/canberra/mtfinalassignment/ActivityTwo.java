@@ -138,6 +138,10 @@ public class ActivityTwo extends AppCompatActivity implements OnMapReadyCallback
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
+            case R.id.list:
+                Intent intent = new Intent(this, ActivityEight.class);
+                startActivity(intent);
+                break;
             case R.id.map_normal:
                 mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
                 break;
