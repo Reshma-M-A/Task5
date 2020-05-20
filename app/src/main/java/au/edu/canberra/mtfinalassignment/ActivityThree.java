@@ -48,6 +48,10 @@ import java.util.Locale;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.ibm.watson.developer_cloud.android.library.camera.CameraHelper;
+import com.ibm.watson.developer_cloud.android.library.camera.GalleryHelper;
+import com.ibm.watson.developer_cloud.service.security.IamOptions;
+import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -68,6 +72,16 @@ public class ActivityThree extends AppCompatActivity {
     private String temp;
     private String item;
     private Bitmap photoBitmap;
+//    IBM stuff
+    private VisualRecognition visualRecognition;
+    private CameraHelper cameraHelper;
+    private GalleryHelper galleryHelper;
+    private File photoFile;
+    private final String api_key = "lgFlrPmtL4HhgC7sJx8H_oitt4nSlSB3Z63HKbK3uXqP";
+    String company;
+    String pictureName;
+
+
     ArrayList<ClassifiedItem> ClassifiedItem = new ArrayList<ClassifiedItem>();
 
     @Override
@@ -75,24 +89,48 @@ public class ActivityThree extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_three);
 
-        Bundle extras = getIntent().getExtras();
-        String title = extras.getString("title");
-        setTitle(title);
         imageView = findViewById(R.id.imageView);
-//            IBM Watson
-        if(title == "IBM Watson ML Cloud Services"){
-            imageView.setImageDrawable(getResources()
-                    .getDrawable((R.drawable.ibm), getTheme()));
+
+        if(savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras == null){
+                company = null;
+                pictureName = null;
+            } else {
+                company = extras.getString("title");
+                setTitle(company);
+//                pictureName = extras.getString("pictureTitle");
+//                if (pictureName =="google"){
+//                    imageView.setImageDrawable(getResources()
+//                            .getDrawable((R.drawable.google), getTheme()));
+//                }
+//                if(pictureName =="ibm"){
+//                    imageView.setImageDrawable(getResources()
+//                            .getDrawable((R.drawable.ibm), getTheme()));
+//                }
+            }
+        } else {
+            company = (String) savedInstanceState.getSerializable("title");
+            setTitle(company);
+//            pictureName =(String) savedInstanceState.getSerializable("pictureTitle");
+//            if (pictureName =="google"){
+//                imageView.setImageDrawable(getResources()
+//                        .getDrawable((R.drawable.google), getTheme()));
+//            }
+//            if(pictureName =="ibm"){
+//                imageView.setImageDrawable(getResources()
+//                        .getDrawable((R.drawable.ibm), getTheme()));
+//            }
+
         }
-        if(title != "IBM Watson ML Cloud Services") {
-            imageView.setImageDrawable(getResources()
-                    .getDrawable((R.drawable.google), getTheme()));
-        }
+
         textView = (TextView) findViewById(R.id.textView);
         activity = this;
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+
     public void capture(View view){
         if (checkPermissions() == false)
             return;
