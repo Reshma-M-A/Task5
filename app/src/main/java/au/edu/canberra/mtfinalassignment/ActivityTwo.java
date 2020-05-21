@@ -24,13 +24,11 @@ public class ActivityTwo extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     LatLng google = new LatLng(37.3981617,-122.1220645);
     LatLng ibm = new LatLng(41.1308344,-73.7315235);
-//    private String[] placeMarkersFinal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_two);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -83,8 +81,7 @@ public class ActivityTwo extends AppCompatActivity implements OnMapReadyCallback
             //inflate selected marker and fill with related information
             @Override
             public View getInfoContents(Marker marker) {
-                //added suppression to remove "avoid passing 'null' as the view root" warning
-                @SuppressLint("InflateParams") View infoWindow = getLayoutInflater().inflate(R.layout.infowindow_with_image, null);
+                View infoWindow = getLayoutInflater().inflate(R.layout.infowindow_with_image, null);
 
                 TextView title = infoWindow.findViewById(R.id.title);
                 TextView snippet = infoWindow.findViewById(R.id.snippet);

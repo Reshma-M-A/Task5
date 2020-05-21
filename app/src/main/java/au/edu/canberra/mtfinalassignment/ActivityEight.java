@@ -44,6 +44,7 @@ public class ActivityEight extends AppCompatActivity {
         setContentView(R.layout.activity_eight);
         setTitle("IBM and Google Image Classification");
 
+
         final ClassifiedItemAdapter adapter = new ClassifiedItemAdapter(
                 this, R.layout.activity_eight, ClassifiedItem);
         dbRef.addChildEventListener(new ChildEventListener() {
@@ -148,7 +149,7 @@ public class ActivityEight extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
     public void openCap(View v) {
-        Intent intent = new Intent(getApplicationContext(), ActivityThree.class);
-        startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), ActivityTwo.class);
+            startActivity(intent);
     }
 }

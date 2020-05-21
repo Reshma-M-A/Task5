@@ -158,6 +158,7 @@ public class ActivitySeven extends AppCompatActivity {
             dbRef.child(key).removeValue();
         }
         Intent intent = new Intent(getApplicationContext(),ActivityEight.class);
+        intent.putExtra("company", company);
         startActivity(intent);
     }
 
