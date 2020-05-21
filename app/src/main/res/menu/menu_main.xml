@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/list"
-        android:orderInCategory="100"
+        android:orderInCategory="0"
         android:title="List View"
         app:showAsAction="never" />
 

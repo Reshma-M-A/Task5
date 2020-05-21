@@ -37,13 +37,15 @@ public class ActivityEight extends AppCompatActivity {
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference dbRef = db.getReference("classified_item");
     ArrayList<String> keys = new ArrayList<String>();
+    String company;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eight);
         setTitle("IBM and Google Image Classification");
-
+        Intent intent = getIntent();
+        company = intent.getStringExtra("company");
 
         final ClassifiedItemAdapter adapter = new ClassifiedItemAdapter(
                 this, R.layout.activity_eight, ClassifiedItem);
@@ -150,6 +152,7 @@ public class ActivityEight extends AppCompatActivity {
     }
     public void openCap(View v) {
             Intent intent = new Intent(getApplicationContext(), ActivityTwo.class);
+            intent.putExtra("company", company);
             startActivity(intent);
     }
 }

@@ -62,7 +62,13 @@ public class ActivitySeven extends AppCompatActivity {
         outputFileUri=intent.getParcelableExtra("uri");
         key=intent.getStringExtra("key");
         company = intent.getStringExtra("company");
-        setTitle(company);
+        if (company.equals("Google Firebase ML Cloud Services")) {
+            setTitle(company);
+        }
+        else{
+            setTitle("Editing Classification Results");
+        }
+
         try {
             photoBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), outputFileUri);
         } catch (IOException e) {
@@ -82,7 +88,6 @@ public class ActivitySeven extends AppCompatActivity {
         startActivity(intent);
     }
     public void save(View view){
-
         if(key!=null) {
             ClassifiedItem item = new ClassifiedItem(editText.getText().toString(), editText2.getText().toString(), imageFileName);
             updateDataItemFromFirebaseDatabase(item, key);

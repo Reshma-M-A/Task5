@@ -8,10 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.android.gms.maps.GoogleMap;
 
 public class ActivityOne extends AppCompatActivity {
-    private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +36,10 @@ public class ActivityOne extends AppCompatActivity {
                 Intent intent = new Intent(this, ActivityEight.class);
                 startActivity(intent);
                 break;
+//                removing mpas since it will break if the user clicks on it
             case R.id.map_normal:
-                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
                 break;
             case R.id.map_satellite:
-                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                 break;
             default:
                 break;
