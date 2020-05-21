@@ -92,7 +92,7 @@ public class ActivityTwo extends AppCompatActivity implements OnMapReadyCallback
                     title.setText(marker.getTitle());
                     snippet.setText(marker.getSnippet());
                     image.setImageDrawable(getResources()
-                            .getDrawable(R.mipmap.ic_google_round, getTheme()));
+                            .getDrawable(R.drawable.google, getTheme()));
                 }
 
                 //IBM custom info window
@@ -100,7 +100,7 @@ public class ActivityTwo extends AppCompatActivity implements OnMapReadyCallback
                     title.setText(marker.getTitle());
                     snippet.setText(marker.getSnippet());
                     image.setImageDrawable(getResources()
-                            .getDrawable(R.mipmap.ic_ibm_round, getTheme()));
+                            .getDrawable(R.drawable.ibm, getTheme()));
                 }
                 return infoWindow;
 
