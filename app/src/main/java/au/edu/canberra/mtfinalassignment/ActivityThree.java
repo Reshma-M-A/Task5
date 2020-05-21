@@ -79,7 +79,6 @@ public class ActivityThree extends AppCompatActivity {
     private File photoFile;
     private final String api_key = "lgFlrPmtL4HhgC7sJx8H_oitt4nSlSB3Z63HKbK3uXqP";
     String company;
-    String pictureName;
 
 
     ArrayList<ClassifiedItem> ClassifiedItem = new ArrayList<ClassifiedItem>();
@@ -95,33 +94,21 @@ public class ActivityThree extends AppCompatActivity {
             Bundle extras = getIntent().getExtras();
             if (extras == null){
                 company = null;
-                pictureName = null;
             } else {
                 company = extras.getString("title");
                 setTitle(company);
-//                pictureName = extras.getString("pictureTitle");
-//                if (pictureName =="google"){
-//                    imageView.setImageDrawable(getResources()
-//                            .getDrawable((R.drawable.google), getTheme()));
-//                }
-//                if(pictureName =="ibm"){
-//                    imageView.setImageDrawable(getResources()
-//                            .getDrawable((R.drawable.ibm), getTheme()));
-//                }
+                if (company.equals("Google Firebase ML Cloud Services")){
+                imageView.setImageDrawable(getResources()
+                        .getDrawable((R.drawable.google), getTheme()));
+            }
+                else if(company.equals("IBM Watson ML Cloud Services")){
+                    imageView.setImageDrawable(getResources()
+                        .getDrawable((R.drawable.ibm), getTheme()));
+                }
             }
         } else {
             company = (String) savedInstanceState.getSerializable("title");
             setTitle(company);
-//            pictureName =(String) savedInstanceState.getSerializable("pictureTitle");
-//            if (pictureName =="google"){
-//                imageView.setImageDrawable(getResources()
-//                        .getDrawable((R.drawable.google), getTheme()));
-//            }
-//            if(pictureName =="ibm"){
-//                imageView.setImageDrawable(getResources()
-//                        .getDrawable((R.drawable.ibm), getTheme()));
-//            }
-
         }
 
         textView = (TextView) findViewById(R.id.textView);
