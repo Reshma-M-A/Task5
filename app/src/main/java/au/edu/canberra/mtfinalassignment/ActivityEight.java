@@ -42,6 +42,7 @@ public class ActivityEight extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eight);
+        setTitle("IBM and Google Image Classification");
 
         final ClassifiedItemAdapter adapter = new ClassifiedItemAdapter(
                 this, R.layout.activity_eight, ClassifiedItem);
@@ -118,7 +119,7 @@ public class ActivityEight extends AppCompatActivity {
             notifyUser(ex.getMessage());
         }
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
     public void downloadFile(StorageReference fileRef, final File file) {
         if (file != null) {
@@ -149,32 +150,5 @@ public class ActivityEight extends AppCompatActivity {
     public void openCap(View v) {
         Intent intent = new Intent(getApplicationContext(), ActivityThree.class);
         startActivity(intent);
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.list) {
-            Intent intent = new Intent(this, ActivityEight.class);
-            startActivity(intent);
-            return true;
-        }
-        if (id == R.id.add) {
-            Intent intent = new Intent(this, ActivityThree.class);
-            startActivity(intent);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

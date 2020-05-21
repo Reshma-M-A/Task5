@@ -44,6 +44,7 @@ public class ActivitySix extends AppCompatActivity {
     String imageFileName;
     String classifiedResult;
     String itemName;
+    String company;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +55,9 @@ public class ActivitySix extends AppCompatActivity {
         classifiedResult = intent.getStringExtra("classifiedResult");
         imageFileName=intent.getStringExtra("imageFileName");
         outputFileUri=intent.getParcelableExtra("uri");
+        company = intent.getStringExtra("company");
+        setTitle(company);
+
         try {
             photoBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), outputFileUri);
         } catch (IOException e) {
@@ -62,13 +66,20 @@ public class ActivitySix extends AppCompatActivity {
         textView1=findViewById(R.id.textView1);
         textView1.setText("");
         textView1.append(itemName);
+
         textView2=findViewById(R.id.textView2);
         textView2.setText("");
+        if (company.equals("Google Firebase ML Cloud Services")){
+            textView2.append("Firebase ML: ");
+        }
+        else if(company.equals("IBM Watson ML Cloud Services")){
+            textView2.append("IBM Watson: ");
+        }
         textView2.append(classifiedResult);
         imageView=findViewById(R.id.imageView);
         imageView.setImageBitmap(photoBitmap);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
     public void edit(View view)
     {
@@ -79,33 +90,7 @@ public class ActivitySix extends AppCompatActivity {
         intent.putExtra("itemName",itemName);
         intent.putExtra("classifiedResult",classifiedResult);
         intent.putExtra("imageFileName",imageFileName);
+        intent.putExtra("company", company);
         startActivity(intent);
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.list) {
-            Intent intent = new Intent(this, ActivityEight.class);
-            startActivity(intent);
-            return true;
-        }
-        if (id == R.id.add) {
-            Intent intent = new Intent(this, ActivityThree.class);
-            startActivity(intent);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
