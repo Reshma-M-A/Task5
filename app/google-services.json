@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1052318201932",
+    "firebase_url": "https://realtime-db-3755c.firebaseio.com",
+    "project_id": "realtime-db-3755c",
+    "storage_bucket": "realtime-db-3755c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052318201932:android:f220efc512c187e2d89ce9",
+        "android_client_info": {
+          "package_name": "au.edu.canberra.mtfinalassignment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1052318201932-3bho5a5gf3ru5fnhjac1b9lo73vvn7jt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJgUcNv62s6b8i3HWNk9PgLM5yBplNOO0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1052318201932-3bho5a5gf3ru5fnhjac1b9lo73vvn7jt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
