@@ -52,8 +52,10 @@ public class ActivitySix extends AppCompatActivity {
 
         Intent intent = getIntent();
         itemName = intent.getStringExtra("itemName");
+
         classifiedResult = intent.getStringExtra("classifiedResult");
         imageFileName=intent.getStringExtra("imageFileName");
+
         outputFileUri=intent.getParcelableExtra("uri");
         company = intent.getStringExtra("company");
         setTitle(company);
@@ -73,9 +75,11 @@ public class ActivitySix extends AppCompatActivity {
         if(company.equals("Google Firebase ML Cloud Services")){
             textView2.append("Firebase ML: ");
         }
+
         if(company.equals("IBM Watson ML Cloud Services")){
             textView2.append("IBM Watson: ");
         }
+
         textView2.append(classifiedResult);
         imageView=findViewById(R.id.imageView);
         imageView.setImageBitmap(photoBitmap);

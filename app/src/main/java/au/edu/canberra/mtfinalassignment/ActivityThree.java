@@ -72,6 +72,7 @@ public class ActivityThree extends AppCompatActivity {
     private String temp;
     private String item;
     private Bitmap photoBitmap;
+
 //    IBM stuff
     private VisualRecognition visualRecognition;
     private CameraHelper cameraHelper;
@@ -154,6 +155,7 @@ public class ActivityThree extends AppCompatActivity {
 
         return grantCamera && grantExternal;
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

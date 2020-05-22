@@ -22,7 +22,9 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ActivityTwo extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+//    google
     LatLng google = new LatLng(37.3981617,-122.1220645);
+//    ibm
     LatLng ibm = new LatLng(41.1308344,-73.7315235);
 
     @Override
@@ -32,6 +34,7 @@ public class ActivityTwo extends AppCompatActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+//        Set title
         setTitle("Google and IBM Headquarters");
 
     }
@@ -78,7 +81,6 @@ public class ActivityTwo extends AppCompatActivity implements OnMapReadyCallback
                 return null;
             }
 
-            //inflate selected marker and fill with related information
             @Override
             public View getInfoContents(Marker marker) {
                 View infoWindow = getLayoutInflater().inflate(R.layout.infowindow_with_image, null);
@@ -87,14 +89,6 @@ public class ActivityTwo extends AppCompatActivity implements OnMapReadyCallback
                 TextView snippet = infoWindow.findViewById(R.id.snippet);
                 ImageView image = infoWindow.findViewById(R.id.info_image);
 
-                //Google custom info window
-                if (marker.getId().equals(googleMarker.getId())) {
-                    title.setText(marker.getTitle());
-                    snippet.setText(marker.getSnippet());
-                    image.setImageDrawable(getResources()
-                            .getDrawable(R.drawable.google, getTheme()));
-                }
-
                 //IBM custom info window
                 if (marker.getId().equals(ibmMarker.getId())) {
                     title.setText(marker.getTitle());
@@ -102,8 +96,14 @@ public class ActivityTwo extends AppCompatActivity implements OnMapReadyCallback
                     image.setImageDrawable(getResources()
                             .getDrawable(R.drawable.ibm, getTheme()));
                 }
+                //Google custom info window
+                if (marker.getId().equals(googleMarker.getId())) {
+                    title.setText(marker.getTitle());
+                    snippet.setText(marker.getSnippet());
+                    image.setImageDrawable(getResources()
+                            .getDrawable(R.drawable.google, getTheme()));
+                }
                 return infoWindow;
-
             }
         });
 
@@ -111,16 +111,16 @@ public class ActivityTwo extends AppCompatActivity implements OnMapReadyCallback
             @Override
             public void onInfoWindowClick(Marker marker) {
 
-                if (marker.getId().equals(googleMarker.getId())) {
-                    Intent intent = new Intent(getApplicationContext(), ActivityThree.class);
-                    intent.putExtra("title", "Google Firebase ML Cloud Services");
-                    startActivity(intent);
-                }
-                if (marker.getId().equals(ibmMarker.getId())) {
-                    Intent intent = new Intent(getApplicationContext(), ActivityThree.class);
-                    intent.putExtra("title", "IBM Watson ML Cloud Services");
-                    startActivity(intent);
-                }
+            if (marker.getId().equals(googleMarker.getId())) {
+                Intent intent = new Intent(getApplicationContext(), ActivityThree.class);
+                intent.putExtra("title", "Google Firebase ML Cloud Services");
+                startActivity(intent);
+            }
+            if (marker.getId().equals(ibmMarker.getId())) {
+                Intent intent = new Intent(getApplicationContext(), ActivityThree.class);
+                intent.putExtra("title", "IBM Watson ML Cloud Services");
+                startActivity(intent);
+            }
             }
         });
     }
@@ -135,6 +135,7 @@ public class ActivityTwo extends AppCompatActivity implements OnMapReadyCallback
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
+//            clean up this code
             case R.id.list:
                 Intent intent = new Intent(this, ActivityEight.class);
                 startActivity(intent);
