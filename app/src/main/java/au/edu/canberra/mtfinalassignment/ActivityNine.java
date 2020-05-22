@@ -47,8 +47,8 @@ public class ActivityNine extends AppCompatActivity {
         ImageFileName = extras.getString("ImageFileName");
         key = extras.getString("key");
         company = extras.getString("company");
+//        set Title it doesn't change
         setTitle("IBM and Google Image Classification");
-
         TextView tv = (TextView) findViewById(R.id.textView1);
         tv.setText(ItemName);
 
@@ -64,6 +64,8 @@ public class ActivityNine extends AppCompatActivity {
         tv.setText(ClassifiedResult);
 
     }
+
+
     public void setImage(String imageFileName, final File file) {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference("images");
@@ -72,21 +74,23 @@ public class ActivityNine extends AppCompatActivity {
             final File localFile = File.createTempFile("temp", ".jpg");
             fileRef.getFile(localFile)
                     .addOnSuccessListener(
+//                            to let users know when it is donw
                             new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                     uri = Uri.fromFile(localFile);
                                     ImageView imageView = (ImageView)findViewById(R.id.imageView);
                                     imageView.setImageURI(uri);
-                                    notifyUser("Download complete");
+                                    notifyUser("Download is complete =)");
                                 }
                             })
+//                    let user know if there is an error
                     .addOnFailureListener(
                             new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception exception) {
                                     // Handle any errors
-                                    notifyUser("Unable to download");
+                                    notifyUser("Unable to download =(");
                                 }
                             });
         } catch (IOException ex) {
@@ -105,6 +109,15 @@ public class ActivityNine extends AppCompatActivity {
         intent.putExtra("classifiedResult",ClassifiedResult);
         intent.putExtra("imageFileName",ImageFileName);
         intent.putExtra("company",company);
+
+
+//        String itemName=textView1.getText().toString();
+//        String classifiedResult=textView2.getText().toString();
+//        intent.putExtra("uri",outputFileUri);
+//        intent.putExtra("itemName",itemName);
+//        intent.putExtra("classifiedResult",classifiedResult);
+//        intent.putExtra("imageFileName",imageFileName);
+//        intent.putExtra("company", company);
         startActivity(intent);
     }
     public void delete(View view){

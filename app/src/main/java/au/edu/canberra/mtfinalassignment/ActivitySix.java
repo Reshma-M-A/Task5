@@ -69,10 +69,11 @@ public class ActivitySix extends AppCompatActivity {
 
         textView2=findViewById(R.id.textView2);
         textView2.setText("");
-        if (company.equals("Google Firebase ML Cloud Services")){
+
+        if(company.equals("Google Firebase ML Cloud Services")){
             textView2.append("Firebase ML: ");
         }
-        else if(company.equals("IBM Watson ML Cloud Services")){
+        if(company.equals("IBM Watson ML Cloud Services")){
             textView2.append("IBM Watson: ");
         }
         textView2.append(classifiedResult);
@@ -81,11 +82,10 @@ public class ActivitySix extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
-    public void edit(View view)
-    {
+    public void edit(View view) {
         Intent intent = new Intent(getApplicationContext(),ActivitySeven.class);
-        String itemName=textView1.getText().toString();
-        String classifiedResult=textView2.getText().toString();
+        String itemName = textView1.getText().toString();
+        String classifiedResult = textView2.getText().toString();
         intent.putExtra("uri",outputFileUri);
         intent.putExtra("itemName",itemName);
         intent.putExtra("classifiedResult",classifiedResult);

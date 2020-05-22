@@ -17,15 +17,16 @@ public class ActivityOne extends AppCompatActivity {
         setContentView(R.layout.activity_one);
     }
 
-    public void openListView(View v) {
-        Intent intent = new Intent(getApplicationContext(), ActivityTwo.class);
-        startActivity(intent);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+
+    public void openListView(View v) {
+        Intent intent = new Intent(getApplicationContext(), ActivityTwo.class);
+        startActivity(intent);
     }
 
     @Override
@@ -36,7 +37,7 @@ public class ActivityOne extends AppCompatActivity {
                 Intent intent = new Intent(this, ActivityEight.class);
                 startActivity(intent);
                 break;
-//                removing mpas since it will break if the user clicks on it
+//                removing maps since it will break if the user clicks on it
             case R.id.map_normal:
                 break;
             case R.id.map_satellite:
