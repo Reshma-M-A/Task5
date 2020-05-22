@@ -33,6 +33,7 @@ public class ActivityNine extends AppCompatActivity {
     String ImageFileName;
     Uri uri;
     String key;
+    String company;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +45,8 @@ public class ActivityNine extends AppCompatActivity {
         ItemName = extras.getString("ItemName");
         ClassifiedResult = extras.getString("ClassifiedResult");
         ImageFileName = extras.getString("ImageFileName");
-        key=extras.getString("key");
+        key = extras.getString("key");
+        company = extras.getString("company");
         setTitle("IBM and Google Image Classification");
 
         TextView tv = (TextView) findViewById(R.id.textView1);
@@ -96,13 +98,13 @@ public class ActivityNine extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
     public void edit(View view){
-//        editicontent
         Intent intent = new Intent(getApplicationContext(),ActivitySeven.class);
         intent.putExtra("uri",uri);
         intent.putExtra("key",key);
         intent.putExtra("itemName",ItemName);
         intent.putExtra("classifiedResult",ClassifiedResult);
         intent.putExtra("imageFileName",ImageFileName);
+        intent.putExtra("company",company);
         startActivity(intent);
     }
     public void delete(View view){

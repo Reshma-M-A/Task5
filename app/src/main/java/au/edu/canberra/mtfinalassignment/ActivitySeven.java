@@ -65,10 +65,9 @@ public class ActivitySeven extends AppCompatActivity {
         if (company.equals("Google Firebase ML Cloud Services")) {
             setTitle(company);
         }
-        else{
+        if(company.equals("IBM Watson ML Cloud Services")){
             setTitle("Editing Classification Results");
         }
-
         try {
             photoBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), outputFileUri);
         } catch (IOException e) {

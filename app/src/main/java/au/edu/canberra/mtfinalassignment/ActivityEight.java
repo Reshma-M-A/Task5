@@ -101,9 +101,10 @@ public class ActivityEight extends AppCompatActivity {
                         ClassifiedItem dtm = ClassifiedItem.get(position);
                         Intent intent = new Intent(view.getContext(), ActivityNine.class);
                         intent.putExtra("ItemName", dtm.getItemName());
-                        intent.putExtra("ClassifiedResult", dtm.getClassifiedResult());
                         intent.putExtra("ImageFileName", dtm.getImageFileName());
+                        intent.putExtra("ClassifiedResult", dtm.getClassifiedResult());
                         intent.putExtra("key", key);
+                        intent.putExtra("company", company);
                         startActivity(intent);
                     }
                 });
@@ -114,14 +115,9 @@ public class ActivityEight extends AppCompatActivity {
         final StorageReference imagesRef = storageRef.child("images");
         try {
             final File localFile = File.createTempFile("temp", ".jpg");
-            //String filename = "img_" + String.valueOf(imageRes) + ".jpg";
-
-            //downloadFile(imagesRef.child(filename), localFile);
-
         } catch (IOException ex) {
             notifyUser(ex.getMessage());
         }
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
     public void downloadFile(StorageReference fileRef, final File file) {
